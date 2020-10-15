@@ -8,18 +8,36 @@ on:
 
 jobs:
   build:
+    strategy:
+        matrix:
+            options:
+                - os: ubuntu-latest
+                  framework: netcoreapp3.1
+                  runtime: -x64
+                - os: windows-latest
+                  framework: netcoreapp3.1
+                  runtime: x64
+                - os: windows-latest
+                  framework: netcoreapp2.1
+                  runtime: x64
+                - os: windows-latest
+                  framework: net472
+                  runtime: x64
+                - os: windows-latest
+                  framework: net472
+                  runtime: x86
 
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.options.os}}
 
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.1.301
+        dotnet-version: 3.1.x
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore -f ${{matrix.options.framework}} -- RunConfiguration.TargetPlatform=${{matrix.options.runtime}}
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal -f ${{matrix.options.framework}} -- RunConfiguration.TargetPlatform=${{matrix.options.runtime}}
