@@ -11,10 +11,10 @@ namespace PlatformBuildTests
             Assert.True(!Environment.Is64BitProcess);
         }
 
-        [Fact]
-        public void Is64BitProcess()
-        {
-            Assert.True(Environment.Is64BitProcess);
-        }
+        //[Fact]
+        //public void Is64BitProcess()
+        //{
+        //    Assert.True(Environment.Is64BitProcess);
+        //}
     }
 }

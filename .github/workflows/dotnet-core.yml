@@ -13,16 +13,13 @@ jobs:
             options:
                 - os: ubuntu-latest
                   framework: netcoreapp3.1
-                  runtime: -x64
+                  runtime: x86
                 - os: windows-latest
                   framework: netcoreapp3.1
-                  runtime: x64
+                  runtime: x86
                 - os: windows-latest
                   framework: netcoreapp2.1
-                  runtime: x64
-                - os: windows-latest
-                  framework: net472
-                  runtime: x64
+                  runtime: x86
                 - os: windows-latest
                   framework: net472
                   runtime: x86
