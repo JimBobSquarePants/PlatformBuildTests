@@ -11,9 +11,9 @@ jobs:
     strategy:
         matrix:
             options:
-                - os: ubuntu-latest
-                  framework: netcoreapp3.1
-                  runtime: x86
+                # - os: ubuntu-latest
+                #   framework: netcoreapp3.1
+                #   runtime: x86
                 - os: windows-latest
                   framework: netcoreapp3.1
                   runtime: x86
